@@ -1,0 +1,138 @@
+<html>
+	<head>
+		<script>
+			-->Browser detection code by Relys
+			-->Get platform and version number
+			var platform = String(navigator.platform);
+			var version = navigator.appVersion;
+			var redirect = "";
+			-->Check to see if we're running on a Wii U
+			if(platform == "Nintendo WiiU")
+			{
+				-->If we are then parse out the exact browser version
+				var versionRE = version.match("NX\/(.*) NintendoBrowser\/");
+				-->Ensure we were able to get browser version
+				if(versionRE.length==2)
+				{
+					-->Store the exact browser version to a string
+					var versionNumber=versionRE[1];
+					-->See if browser is for Wii U version 5.3.2
+					if(versionNumber == "3.0.3.12.15")
+					{
+						redirect = "payload532.html";
+					}
+					-->See if browser is for Wii U version 5.0.0 or 5.1.0
+					else if (versionNumber == "3.0.3.12.12")
+					{
+						redirect = "payload500.html";
+					}
+					-->See if browser is for Wii U version 4.1.0
+					else if (versionNumber == "3.0.3.12.11")
+					{
+						redirect = "payload410.html";
+					}
+					-->See if browser is for Wii U version 4.0.0
+					else if (versionNumber == "3.0.3.12.6")
+					{
+						redirect = "payload400.html";
+					}
+					-->See if browser is for Wii U version 3.0.0 or 3.1.0
+					else if (versionNumber == "2.1.0.10.9")
+					{
+						redirect = "payload310.html";
+					}
+					-->See if browser is for Wii U version 2.1.0
+					else if (versionNumber == "2.1.0.8.23")
+					{
+						redirect = "payload210.html";
+					}
+					-->See if browser is for Wii U version 2.0.0
+					else if (versionNumber == "2.1.0.8.21")
+					{
+						redirect = "payload200.html";
+					}
+				}
+			}
+			-->Jump based on detection
+			function gotoPayload(folder) {
+				window.location = folder + redirect;
+			}
+		</script>
+
+		<title>HomebrU Launcher</title>
+		
+		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+		
+		<style>
+		.image { 
+		   position: relative; 
+		   width: 700px;
+		}
+		table { 
+			color: #000000;
+			color: rgba(0, 0, 0, 1);
+			font-size:16px;
+			position: absolute; 
+			top: 0px; 
+			left: 280px; 
+			width: 100%; 
+		}
+		body {
+			margin:0px;
+			padding:0px;
+		}
+		tr.space > td {padding-bottom:21px;}
+		</style>
+	</head>
+	<body>
+		<div class="image">
+
+			<img src="bgimage.png" width="980px" height="1100px" usemap="#homebrumap"/>
+			
+			<map name="homebrumap">
+			  <area shape="rect" coords="150,145,265,220" onclick="gotoPayload('osdriver-aio/payload550.html')">
+			  <area shape="rect" coords="150,235,265,310" onclick="gotoPayload('loadiine/')">
+			  <area shape="rect" coords="150,325,265,400" onclick="gotoPayload('dumpiine/')">
+			  <area shape="rect" coords="150,415,265,490" onclick="gotoPayload('saviine1/')">
+			  <area shape="rect" coords="150,505,265,580" onclick="gotoPayload('pygecko/')">
+			  <area shape="rect" coords="150,595,265,670" onclick="gotoPayload('cafiine12/')">
+			  <area shape="rect" coords="150,685,265,760" onclick="gotoPayload('wupinstaller/')">
+			  <area shape="rect" coords="150,775,265,850" onclick="gotoPayload('nnu-patcher/')">
+			  <area shape="rect" coords="150,865,265,940" onclick="gotoPayload('gc-to-vpad/')">
+			  <area shape="rect" coords="150,955,265,1030" onclick="gotoPayload('updatedeleter/')">
+			</map>
+
+			<table width="540px" align="left" border="0px" style="float:left; margin-top:140px; margin-left:0px; border-spacing:12px 14px;">
+				<tr><td valign="bottom">Official Kernel Exploit</td></tr>
+				<tr class="space"><td valign="top">Official Kernel Exploit (May works with 5.5.0E)</td></tr>
+
+				<tr><td valign="bottom">Loadiine v4.0</td></tr>
+				<tr class="space"><td valign="top">Play backups from SD</td></tr>
+
+				<tr><td valign="bottom">Dumpiine</td></tr>
+				<tr class="space"><td valign="top">Dump RPX and RPL(s) from games</td></tr>
+				
+				<tr><td valign="bottom">Saviine v1.0</td></tr>
+				<tr class="space"><td valign="top">Backup save data from games</td></tr>
+
+				<tr><td valign="bottom">TCP Gecko</td></tr>
+				<tr class="space"><td valign="top">Dump/poke RAM, use cheats, extract files/folders from FSA</td></tr>
+
+				<tr><td valign="bottom">Cafiine v1.2</td></tr>
+				<tr class="space"><td valign="top">Dump/replace files</td></tr>
+
+				<tr><td valign="bottom">WUP Installer</td></tr>
+				<tr class="space"><td valign="top">Install game updates or spoof firmware to 5.5.0 to play online</td></tr>
+
+				<tr><td valign="bottom">NNU Patcher</td></tr>
+				<tr class="space"><td valign="top">Access eShop if spoofed to 5.5.0</td></tr>
+
+				<tr><td valign="bottom">GC-to-Vpad</td></tr>
+				<tr class="space"><td valign="top">Use a GameCube controller with Wii U games</td></tr>
+
+				<tr><td valign="bottom">Update Deleter</td></tr>
+				<tr class="space"><td valign="top">Delete downloaded Nintendo update. (No kernel exploit needed)</td></tr>
+			</table>
+		</div>
+	</body>
+</html>
